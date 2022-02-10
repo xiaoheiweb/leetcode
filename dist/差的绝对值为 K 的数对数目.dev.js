@@ -1,3 +1,5 @@
+"use strict";
+
 /*
  * @Author: haorongzheng
  * @Date: 2022-02-09 09:27:22
@@ -48,13 +50,15 @@
 1 <= k <= 99
 
  */
+var countKDifference = function countKDifference(nums, k) {
+  var res = 0,
+      n = nums.length;
+  var cnt = new Map();
 
-var countKDifference = function(nums, k) {
-    let res = 0, n = nums.length;
-    const cnt = new Map();
-    for (let j = 0; j < n; ++j) {
-        res += (cnt.get(nums[j] - k) || 0) + (cnt.get(nums[j] + k) || 0);
-        cnt.set(nums[j], (cnt.get(nums[j]) || 0) + 1);
-    }
-    return res;
+  for (var j = 0; j < n; ++j) {
+    res += (cnt.get(nums[j] - k) || 0) + (cnt.get(nums[j] + k) || 0);
+    cnt.set(nums[j], (cnt.get(nums[j]) || 0) + 1);
+  }
+
+  return res;
 };
